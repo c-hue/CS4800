@@ -21,7 +21,8 @@ function Keypad({addChar, delChar, reset, handleOperator, handleEquals}) {
       <Key text="0" onClick={() => addChar("0")}/>
       <Key text="/" onClick={() => addChar("/")}/>
       <Key text="x" onClick={() => addChar("*")}/>
-      <Key text="clear" type={1} area="clear" onClick={() => reset()}/>
+      <Key text="etc" type={1}/>
+      <Key text="clear" type={1} area="reset" onClick={() => reset()}/>
       <Key text="=" type={2} area="equals" onClick={() => handleEquals()}/>
         </div>
     )

@@ -2,9 +2,11 @@ import React from 'react'
 
 function Display({value}) {
     return (
-        <p className="display">
-            {value || "0"}
-        </p>
+        <div className="display">
+            <p className="display-text">
+                {value || "0"}
+            </p>
+        </div>
     )
 }
 
