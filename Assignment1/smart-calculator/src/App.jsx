@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as math from 'mathjs'
 import './App.css'
 import Header from "./components/header"
@@ -60,14 +60,30 @@ function App() {
     setEtc(prev => !prev)
   }
 
+  useEffect(() => {
+    const keyboard = (e) => {
+      if (e.key == "Enter") {
+        equals()
+      } else if (e.key == "Backspace") {
+        backspace()
+      } else if (e.key == "Escape") {
+        clearAll()
+      } else if (["Tab", "CapsLock", "Shift", "Control", "Alt", "Meta"].includes(e.key)) {
+      } else {
+        addExpr(e.key)
+      }
+    }
+
+  window.addEventListener("keydown", keyboard)
+  return () => window.removeEventListener("keydown", keyboard)
+ }, [expr])
+
   return (
     <main className="main">
       <div className="calculator">
         <Header/>
         <Display 
           value={[expr,output]}
-          onChange={(val) => setExpr(val)}
-          onEnter={equals}
         />
         <Keypad
           etc={change}

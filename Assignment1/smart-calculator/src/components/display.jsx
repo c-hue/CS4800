@@ -1,25 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
-function Display({value, onChange, onEnter}) {
-    const inputRef = useRef(null)
-
-    useEffect(() => {
-        if (inputRef.current) {
-            inputRef.current.focus()
-        }
-    }, [])
-
+function Display({value}) {
     return (
-        <input 
-            ref={inputRef}
-            type="text"
-            className="display"
-            value={value[0]}
-            onChange={(e) => onChange(e.target.value)}
-            onKeyDown={(e) => {
-                if (e.key == "Enter") onEnter();
-            }}
-        />
+        <div className="display">
+            {value[0]}
+        </div>
     )
 }
 

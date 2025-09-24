@@ -46,9 +46,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-align: right;
-  border: none;
-  outline: none;
-  caret-color: transparent;
 }
 
 .keypad {
