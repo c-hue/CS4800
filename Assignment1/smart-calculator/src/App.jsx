@@ -64,7 +64,11 @@ function App() {
     <main className="main">
       <div className="calculator">
         <Header/>
-        <Display value={[expr,output]}/>
+        <Display 
+          value={[expr,output]}
+          onChange={(val) => setExpr(val)}
+          onEnter={equals}
+        />
         <Keypad
           etc={change}
           addChar={addExpr}

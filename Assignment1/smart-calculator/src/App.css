@@ -37,16 +37,18 @@
 }
 
 .display {
-  overflow: hidden;
-  white-space: nowrap;
   font-size: 52px;
   margin-bottom: 1rem;
   padding: 0.75rem;
   background-color: var(--darker-green);
-}
-
-.display-text {
   color: white;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+  border: none;
+  outline: none;
+  caret-color: transparent;
 }
 
 .keypad {
