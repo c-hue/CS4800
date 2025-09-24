@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { evaluate } from 'mathjs'
+import * as math from 'mathjs'
 import './App.css'
 import Header from "./components/header"
 import Display from "./components/display"
@@ -9,10 +9,21 @@ function App() {
   // states
   const [expr, setExpr] = useState("")
   const [output, setOutput] = useState("")
+  const [change, setEtc] = useState(false)
 
   function tryEvaluate(input) {
     try {
-      return evaluate(input)
+      const answer = math.evaluate(input)
+      if (math.typeOf(answer) == "Complex" && answer.im !== 0) {
+        setExpr("")
+        return "undefined"
+      }
+      if (Number.isNaN(answer) || answer == Infinity || answer == -Infinity) {
+        setExpr("")
+        return "undefined"
+      }
+      return answer
+
     } catch {
       setExpr("")
       return "Error"
@@ -45,16 +56,22 @@ function App() {
     setExpr(expr + char)
   }
 
+  function etcPressed() {
+    setEtc(prev => !prev)
+  }
+
   return (
     <main className="main">
       <div className="calculator">
         <Header/>
         <Display value={[expr,output]}/>
         <Keypad
+          etc={change}
           addChar={addExpr}
           delChar={backspace}
           reset={clearAll}
           handleEquals={equals}
+          changeGrid={etcPressed}
         />
         
       </div>

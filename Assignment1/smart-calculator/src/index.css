@@ -62,7 +62,7 @@
   ". . . . "
   ". . . . "
   ". . . . "
-  "reset reset equals equals";
+  ". . . . ";
 }
 
 .key {
@@ -87,10 +87,6 @@
 .key-type-1 > .key-text, .key-type-2 > .key-text {
   text-transform: uppercase;
   font-size: 30px;
-}
-
-.key-area-equals {
-  grid-area: equals;
 }
 
 @media (max-width: 560px) {
