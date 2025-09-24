@@ -41,14 +41,8 @@ function App() {
   }
 
   function backspace() {
-    if (output != "Error" && output != "undefined") {
-      setOutput(output.slice(0, -1))
-      setExpr(expr.slice(0, -1))
-    }
-    else {
-      setOutput("")
-      setExpr("")
-    }
+    setOutput(output.slice(0, -1))
+    setExpr(expr.slice(0, -1))
   }
 
   function addExpr(char) {
