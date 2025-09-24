@@ -22,8 +22,8 @@ function App() {
         setExpr("")
         return "undefined"
       }
-      return answer
-
+      return math.format(answer, { notation: 'auto', precision: 10 });
+    
     } catch {
       setExpr("")
       return "Error"

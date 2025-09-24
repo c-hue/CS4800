@@ -37,6 +37,8 @@
 }
 
 .display {
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 52px;
   margin-bottom: 1rem;
   padding: 0.75rem;
