@@ -4,7 +4,7 @@ function Display({value}) {
     return (
         <div className="display">
             <p className="display-text">
-                {value || "0"}
+                {value[1] || value[0]}
             </p>
         </div>
     )

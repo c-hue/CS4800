@@ -1,25 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { evaluate } from 'mathjs'
 import './App.css'
+import Header from "./components/header"
+import Display from "./components/display"
+import Keypad from "./components/keypad"
 
 function App() {
+  // states
   const [expr, setExpr] = useState("")
   const [output, setOutput] = useState("")
 
   function tryEvaluate(input) {
     try {
-      console.log(evaluate(input))
       return evaluate(input)
     } catch {
+      setExpr("")
       return "Error"
     }
   }
 
   function equals() {
-    console.log(expr)
     setOutput(String(tryEvaluate(expr)))
+    setExpr(String(tryEvaluate(expr)))
   }
 
   function clearAll() {
@@ -28,30 +30,35 @@ function App() {
   }
 
   function backspace() {
-    setExpr(expr.slice(0, -1))
+    if (output != "Error" && output != "undefined") {
+      setOutput(output.slice(0, -1))
+      setExpr(expr.slice(0, -1))
+    }
+    else {
+      setOutput("")
+      setExpr("")
+    }
+  }
+
+  function addExpr(char) {
+    setOutput("")
+    setExpr(expr + char)
   }
 
   return (
-    <>
-      <div className="smart-calculator">
-        <div className="display">
-          <div>{expr || "0"}</div>
-          <div>= {output}</div>
-        </div>
-      <div className="buttons">
-        {["7","8","9","/","4","5","6","*","1","2","3","-","0",".","^","+"].map(k => (
-          <button key={k} onClick={() => setExpr(expr + k)}>
-            {k}
-          </button>
-        ))}
+    <main className="main">
+      <div className="calculator">
+        <Header/>
+        <Display value={[expr,output]}/>
+        <Keypad
+          addChar={addExpr}
+          delChar={backspace}
+          reset={clearAll}
+          handleEquals={equals}
+        />
+        
       </div>
-
-      <button onClick={clearAll} className="clear">C</button>
-      <button onClick={backspace} className="delete">X</button>
-      <button onClick={equals} className="equal">=</button>
-
-      </div>
-    </>
+    </main>
   )
 }
 
