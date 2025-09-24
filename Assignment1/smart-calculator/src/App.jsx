@@ -52,8 +52,14 @@ function App() {
   }
 
   function addExpr(char) {
-    setOutput("")
-    setExpr(expr + char)
+    if (output == "Error" || output == "undefined") {
+      setExpr(char)
+      setOutput("")
+    }
+    else {
+      setExpr(expr + char)
+      setOutput("")
+    }
   }
 
   function etcPressed() {
