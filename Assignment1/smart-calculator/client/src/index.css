@@ -1,0 +1,202 @@
+ *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Monaco', sans-serif;
+  user-select: none;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  width: 540px;
+  height: 715px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 33px;
+}
+
+.header-switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-switch-prompt {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.header-switch-container {
+  box-sizing: content-box;
+  position: relative;
+  width: 65px;
+  height: 26px;
+  border-radius: 10000px;
+}
+
+.header-switch-slider {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 3px;
+}
+
+.header-switch-toggle {
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.header-switch-toggle.left {
+  transform: translateX(5px);
+}
+
+.header-switch-toggle.right {
+  transform: translateX(40px);
+}
+
+.header-switch-toggle:hover {
+  filter: brightness(150%);
+}
+
+.ghost {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ghost-1 {
+  left: 5px;
+}
+
+.ghost-2 {
+  right: 5px;
+}
+
+.display, .keypad {
+  border-radius: 10px;
+}
+
+.header-switch-positions {
+  position: absolute;
+  top: -17px;
+  left: 8px;
+  width: 48px;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+}
+
+.calc-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.display {
+  height: 128px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: flex 0.3s ease;
+}
+
+.display-text {
+  padding-right: 31px;
+  font-size: 52px;
+}
+
+.calc-body.ai-mode .display {
+  flex: 4;
+}
+
+.calc-body.ai-mode .keypad {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666
+}
+
+.calc-body.ai-mode .key {
+  display: none;
+}
+
+.keypad {  
+  width: 100%;
+  padding: 31px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 24px;
+  grid-template-areas: 
+  ". . . . "
+  ". . . . "
+  ". . . . "
+  ". . . . "
+  ". . . . ";
+}
+
+.key {
+  width: auto;
+  height: 60px; 
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 7px;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.key-text {
+  font-size: 38px;
+}
+
+.key-type-1, .key-type-2 {
+  padding-bottom: 12px;
+}
+
+.key-type-1 > .key-text, .key-type-2 > .key-text {
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+@media (max-width: 560px) {
+
+  .keypad {
+    gap: 15px;
+    transition: flex 0.3s ease;
+  } 
+
+  .key {
+    height: 70px;
+    padding-bottom: 11px;
+  }
+
+  .key-type-1 > .key-text, .key-type-2 > .key-text {
+    font-size: 22px;
+    padding-bottom: 11px;
+  }
+
+}
